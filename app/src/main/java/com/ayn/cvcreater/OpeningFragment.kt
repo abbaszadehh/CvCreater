@@ -26,7 +26,7 @@ class OpeningFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = ViewPagerAdapter(requireActivity())
-        val list = arrayListOf<Fragment>(Home1Fragment(),Home2Fragment(),PersonalDataFragment())
+        val list = arrayListOf(Home1Fragment(),Home2Fragment(),PersonalDataFragment())
         adapter.setList(list)
         binding.viewPg.adapter = adapter
 

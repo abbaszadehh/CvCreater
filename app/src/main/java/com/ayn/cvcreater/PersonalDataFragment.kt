@@ -2,7 +2,6 @@ package com.ayn.cvcreater
 
 import android.app.DatePickerDialog
 import android.content.DialogInterface
-import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +15,8 @@ import androidx.navigation.fragment.findNavController
 import com.ayn.cvcreater.databinding.FragmentPersonalDataBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
+import java.time.LocalDate
+import java.util.*
 
 class PersonalDataFragment : Fragment() {
     private lateinit var binding: FragmentPersonalDataBinding
@@ -26,7 +27,7 @@ class PersonalDataFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentPersonalDataBinding.inflate(inflater)
         return binding.root
     }
@@ -43,16 +44,16 @@ class PersonalDataFragment : Fragment() {
             modelPersonalList.add(status)
             modelPersonalList.add(about)
             modelPersonalList.add(mail)
-                  }
+        }
 
         binding.dob.setOnClickListener {
+            LocalDate.now().plusYears(15).year
+
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
-            val datePicker = DatePickerDialog(
-                requireActivity(),
-                DatePickerDialog.OnDateSetListener { datePicker, year, month, day ->
+            val datePicker = DatePickerDialog(requireContext(), { datePicker, year, month, day ->
                     binding.dob.setText("$day/${month + 1}/$year")
                 }, year, month, day
             )
@@ -93,7 +94,7 @@ class PersonalDataFragment : Fragment() {
                     email = email
                 )
                 val action =
-                    PersonalDataFragmentDirections.actionPersonalDataFragmentToWorkExperienceFragment(
+                    OpeningFragmentDirections.actionOpeningFragmentToWorkExperienceFragment(
                         modelPersonal
                     )
                 findNavController().navigate(action)
@@ -102,11 +103,9 @@ class PersonalDataFragment : Fragment() {
         }
 
         binding.status.setOnClickListener {
-
             MaterialAlertDialogBuilder(requireContext())
                 .setItems(options) { _, which: Int ->
-
-
+                    binding.status.setText(options[which])
                 }.show()
         }
     }
@@ -115,8 +114,5 @@ class PersonalDataFragment : Fragment() {
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             imageUrl = uri?.path.toString()
             Picasso.get().load(uri).into(binding.photo)
-
-
         }
-
 }

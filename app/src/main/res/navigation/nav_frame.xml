@@ -9,7 +9,11 @@
         android:id="@+id/openingFragment"
         android:name="com.ayn.cvcreater.OpeningFragment"
         android:label="fragment_opening"
-        tools:layout="@layout/fragment_opening" />
+        tools:layout="@layout/fragment_opening" >
+        <action
+            android:id="@+id/action_openingFragment_to_workExperienceFragment"
+            app:destination="@id/workExperienceFragment" />
+    </fragment>
     <fragment
         android:id="@+id/personalDataFragment"
         android:name="com.ayn.cvcreater.PersonalDataFragment"
