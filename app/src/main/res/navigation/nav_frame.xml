@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_frame"
+    app:startDestination="@id/openingFragment">
+
+    <fragment
+        android:id="@+id/openingFragment"
+        android:name="com.ayn.cvcreater.OpeningFragment"
+        android:label="fragment_opening"
+        tools:layout="@layout/fragment_opening" />
+    <fragment
+        android:id="@+id/personalDataFragment"
+        android:name="com.ayn.cvcreater.PersonalDataFragment"
+        android:label="fragment_personal_data"
+        tools:layout="@layout/fragment_personal_data" >
+        <action
+            android:id="@+id/action_personalDataFragment_to_workExperienceFragment"
+            app:destination="@id/workExperienceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workExperienceFragment"
+        android:name="com.ayn.cvcreater.WorkExperienceFragment"
+        android:label="fragment_work_experience"
+        tools:layout="@layout/fragment_work_experience" >
+        <action
+            android:id="@+id/action_workExperienceFragment_to_educationFragment"
+            app:destination="@id/educationFragment" />
+        <argument
+            android:name="modelPersonal"
+            app:argType="com.ayn.cvcreater.ModelPersonal" />
+    </fragment>
+    <fragment
+        android:id="@+id/educationFragment"
+        android:name="com.ayn.cvcreater.EducationFragment"
+        android:label="fragment_education"
+        tools:layout="@layout/fragment_education" >
+        <action
+            android:id="@+id/action_educationFragment_to_additionalDataFragment"
+            app:destination="@id/additionalDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/additionalDataFragment"
+        android:name="com.ayn.cvcreater.AdditionalDataFragment"
+        android:label="fragment_adding_data"
+        tools:layout="@layout/fragment_adding_data" />
+</navigation>
