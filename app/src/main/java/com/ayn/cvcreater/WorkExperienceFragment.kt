@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,9 +15,9 @@ class WorkExperienceFragment : Fragment() {
 
     private lateinit var binding: FragmentWorkExperienceBinding
     private val args: WorkExperienceFragmentArgs by navArgs()
-    private val modelPersonal : ModelPersonal by lazy { args.modelPersonal }
+    private val modelPersonal: ModelPersonal by lazy { args.modelPersonal }
+    private val viewModel: WorkExperienceViewModel by activityViewModels()
     private val workAdapter = WorkExperienceAdapter()
-    private val workList = arrayListOf<ModelWorkExperience>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,13 +29,33 @@ class WorkExperienceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-         setRw()
-         workAdapter.updateList(workList)
+        setRw()
 
-         binding.newWork.setOnClickListener {
-             val action = WorkExperienceFragmentDirections.actionWorkExperienceFragmentToEducationFragment()
-             findNavController().navigate(action)
-         }
+        viewModel.list.observe(viewLifecycleOwner) {
+            workAdapter.updateList(it)
+        }
+
+        workAdapter.onDeleteItem { position ->
+            viewModel.deleteItem(position)
+            viewModel.updateList()
+        }
+
+        workAdapter.onEditItem { position ->
+            viewModel.modifyItem(position)
+            WorkExpHelperDialog().show(childFragmentManager,"work")
+//            val action =
+//                WorkExperienceFragmentDirections.actionWorkExperienceFragmentToWorkExpHelperFragment()
+//            findNavController().navigate(action)
+        }
+
+        binding.newWork.setOnClickListener {
+            viewModel.modifyItem(null)
+//            val action =
+//                WorkExperienceFragmentDirections.actionWorkExperienceFragmentToWorkExpHelperFragment()
+//            findNavController().navigate(action)
+            WorkExpHelperDialog().show(childFragmentManager,"work")
+        }
+
     }
     fun setRw() {
         with(binding.rwHome) {

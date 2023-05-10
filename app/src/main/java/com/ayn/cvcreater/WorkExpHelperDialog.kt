@@ -1,6 +1,7 @@
 package com.ayn.cvcreater
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ class WorkExpHelperDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("workexp dialog","onView")
         viewModel.model.observe(viewLifecycleOwner) {
             it?.let {
                 binding.jobTitle.setText(it.jobTitle)
@@ -31,15 +33,39 @@ class WorkExpHelperDialog : DialogFragment() {
                 binding.enteringDate.setText(it.enteringDate)
                 binding.exitDate.setText(it.exitingDate)
             } ?: apply {
-
                 binding.jobTitle.setText("")
                 binding.companyName.setText("")
                 binding.enteringDate.setText("")
                 binding.exitDate.setText("")
             }
         }
+
+        binding.save.setOnClickListener {
+            val item = viewModel.getCurrentItem()
+            val jobTitle = binding.jobTitle.text.toString()
+            val companyName = binding.companyName.text.toString()
+            val enteringDate = binding.enteringDate.text.toString()
+            val exitDate = binding.exitDate.text.toString()
+            item?.let {
+                item.companyName = companyName
+                item.jobTitle = jobTitle
+                item.enteringDate = enteringDate
+                item.exitingDate = exitDate
+            } ?: apply {
+                val newItem = ModelWorkExperience(
+                    jobTitle,
+                    companyName,
+                    enteringDate,
+                    exitDate
+                )
+                viewModel.workList.add(newItem)
+            }
+            viewModel.updateList()
+            dialog?.dismiss()
+
+        }
         dialog?.setOnDismissListener {
-            viewModel.addModel(null)
+            viewModel.modifyItem(null)
         }
     }
 }

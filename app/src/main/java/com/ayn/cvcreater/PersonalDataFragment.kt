@@ -69,6 +69,32 @@ class PersonalDataFragment : Fragment() {
 
         binding.next.setOnClickListener {
 
+            val name1 =""
+            val surname1 =""
+            val dob1 =""
+            val address1 =""
+            val contactNumber1 =""
+            val socialStatus1 =""
+            val description1 =""
+            val email1 =""
+            val modelPersonal = ModelPersonal(
+                name = name1,
+                surname = surname1,
+                dob = dob1,
+                address = address1,
+                phone = contactNumber1,
+                photo = imageUrl,
+                socialStatus = socialStatus1,
+                description = description1,
+                email = email1,
+            )
+
+            val action =
+                OpeningFragmentDirections.actionOpeningFragmentToWorkExperienceFragment(
+                    modelPersonal
+                )
+            findNavController().navigate(action)
+
            if(modelPersonalList.any{ it.text.isEmpty() }){
                Toast.makeText(requireContext(),"Punktlar boş ola bilməz", Toast.LENGTH_LONG).show()
            }

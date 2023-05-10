@@ -1,8 +1,8 @@
 package com.ayn.cvcreater
 
 data class ModelWorkExperience(
-    val jobTitle : String,
-    val companyName : String,
-    val enteringDate : String,
-    val exitingDate : String
+    var jobTitle : String,
+    var companyName : String,
+    var enteringDate : String,
+    var exitingDate : String
 )
