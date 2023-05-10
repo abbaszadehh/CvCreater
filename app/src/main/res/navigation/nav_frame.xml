@@ -34,6 +34,9 @@
         <argument
             android:name="modelPersonal"
             app:argType="com.ayn.cvcreater.ModelPersonal" />
+        <action
+            android:id="@+id/action_workExperienceFragment_to_workExpHelperFragment"
+            app:destination="@id/workExpHelperFragment" />
     </fragment>
     <fragment
         android:id="@+id/educationFragment"
@@ -49,4 +52,9 @@
         android:name="com.ayn.cvcreater.AdditionalDataFragment"
         android:label="fragment_adding_data"
         tools:layout="@layout/fragment_adding_data" />
+    <dialog
+        android:id="@+id/workExpHelperFragment"
+        android:name="com.ayn.cvcreater.WorkExpHelperDialog"
+        android:label="fragment_work_exp_helper"
+        tools:layout="@layout/fragment_work_exp_helper" />
 </navigation>

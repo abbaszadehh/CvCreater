@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.ayn.cvcreater.databinding.FragmentOpeningBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class OpeningFragment : Fragment() {
 
@@ -30,5 +31,10 @@ class OpeningFragment : Fragment() {
         adapter.setList(list)
         binding.viewPg.adapter = adapter
 
+        TabLayoutMediator(binding.tabLayout, binding.viewPg) { tab, position ->
+        }.attach()
+
     }
+
+
     }
