@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_educationFragment_to_additionalDataFragment"
             app:destination="@id/additionalDataFragment" />
+        <argument
+            android:name="modelWork"
+            app:argType="com.ayn.cvcreater.WorkAndPersonalDataModel" />
     </fragment>
     <fragment
         android:id="@+id/additionalDataFragment"

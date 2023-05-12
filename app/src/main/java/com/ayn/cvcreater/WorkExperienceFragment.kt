@@ -55,6 +55,11 @@ class WorkExperienceFragment : Fragment() {
 //            findNavController().navigate(action)
             WorkExpHelperDialog().show(childFragmentManager,"work")
         }
+        binding.nextSave.setOnClickListener {
+            val workModel  = WorkAndPersonalDataModel(modelPersonal,viewModel.workList.toList())
+            val action = WorkExperienceFragmentDirections.actionWorkExperienceFragmentToEducationFragment()
+            findNavController().navigate(action)
+        }
 
     }
     fun setRw() {
