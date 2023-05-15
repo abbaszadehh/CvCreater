@@ -33,7 +33,7 @@
             app:destination="@id/educationFragment" />
         <argument
             android:name="modelPersonal"
-            app:argType="com.ayn.cvcreater.ModelPersonal" />
+            app:argType="com.ayn.cvcreater.model.ModelPersonal" />
         <action
             android:id="@+id/action_workExperienceFragment_to_workExpHelperFragment"
             app:destination="@id/workExpHelperFragment" />
@@ -48,7 +48,7 @@
             app:destination="@id/additionalDataFragment" />
         <argument
             android:name="modelWork"
-            app:argType="com.ayn.cvcreater.WorkAndPersonalDataModel" />
+            app:argType="com.ayn.cvcreater.model.WorkAndPersonalDataModel" />
         <action
             android:id="@+id/action_educationFragment_to_educationHelperDialog"
             app:destination="@id/educationHelperDialog" />

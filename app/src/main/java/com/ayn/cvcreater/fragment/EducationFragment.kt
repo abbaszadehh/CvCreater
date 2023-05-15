@@ -9,7 +9,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ayn.cvcreater.EducationFragmentArgs
 import com.ayn.cvcreater.adapter.EducationAdapter
 import com.ayn.cvcreater.databinding.FragmentEducationBinding
 import com.ayn.cvcreater.dialoq.EducationHelperDialog
@@ -49,7 +48,6 @@ class EducationFragment : Fragment() {
             viewModel.modifyItem(position)
             EducationHelperDialog().show(childFragmentManager, "education")
         }
-
 
 
         binding.newEdu.setOnClickListener {

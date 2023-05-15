@@ -11,8 +11,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ayn.cvcreater.dialoq.WorkExpHelperDialog
 import com.ayn.cvcreater.adapter.WorkExperienceAdapter
-import com.ayn.cvcreater.WorkExperienceFragmentArgs
-import com.ayn.cvcreater.WorkExperienceFragmentDirections
 import com.ayn.cvcreater.viewModel.WorkExperienceViewModel
 import com.ayn.cvcreater.databinding.FragmentWorkExperienceBinding
 import com.ayn.cvcreater.model.ModelPersonal
@@ -52,7 +50,7 @@ class WorkExperienceFragment : Fragment() {
             WorkExpHelperDialog().show(childFragmentManager,"work")
         }
 
-        binding.newWork.setOnClickListener {
+        binding.newEdu.setOnClickListener {
             viewModel.modifyItem(null)
             WorkExpHelperDialog().show(childFragmentManager,"work")
         }
