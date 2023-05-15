@@ -1,4 +1,4 @@
-package com.ayn.cvcreater
+package com.ayn.cvcreater.adapter
 
 import android.annotation.SuppressLint
 import androidx.fragment.app.Fragment

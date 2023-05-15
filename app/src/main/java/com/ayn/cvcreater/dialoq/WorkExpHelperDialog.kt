@@ -1,4 +1,4 @@
-package com.ayn.cvcreater
+package com.ayn.cvcreater.dialoq
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.ayn.cvcreater.databinding.FragmentWorkExpHelperBinding
+import com.ayn.cvcreater.model.ModelWorkExperience
+import com.ayn.cvcreater.viewModel.WorkExperienceViewModel
 
 class WorkExpHelperDialog : DialogFragment() {
 

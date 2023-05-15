@@ -1,14 +1,15 @@
-package com.ayn.cvcreater
+package com.ayn.cvcreater.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ayn.cvcreater.model.ModelWorkExperience
 
 class WorkExperienceViewModel : ViewModel() {
     val workList = arrayListOf<ModelWorkExperience>()
     private var modifiedIndex : Int? = null
 
-    fun getCurrentItem() :ModelWorkExperience?{
+    fun getCurrentItem() : ModelWorkExperience?{
         return modifiedIndex?.let {
             workList[it]
         }

@@ -1,4 +1,4 @@
-package com.ayn.cvcreater
+package com.ayn.cvcreater.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ayn.cvcreater.dialoq.WorkExpHelperDialog
+import com.ayn.cvcreater.adapter.WorkExperienceAdapter
+import com.ayn.cvcreater.WorkExperienceFragmentArgs
+import com.ayn.cvcreater.WorkExperienceFragmentDirections
+import com.ayn.cvcreater.viewModel.WorkExperienceViewModel
 import com.ayn.cvcreater.databinding.FragmentWorkExperienceBinding
+import com.ayn.cvcreater.model.ModelPersonal
+import com.ayn.cvcreater.model.WorkAndPersonalDataModel
 
 class WorkExperienceFragment : Fragment() {
 
@@ -43,21 +50,18 @@ class WorkExperienceFragment : Fragment() {
         workAdapter.onEditItem { position ->
             viewModel.modifyItem(position)
             WorkExpHelperDialog().show(childFragmentManager,"work")
-//            val action =
-//                WorkExperienceFragmentDirections.actionWorkExperienceFragmentToWorkExpHelperFragment()
-//            findNavController().navigate(action)
         }
 
         binding.newWork.setOnClickListener {
             viewModel.modifyItem(null)
-//            val action =
-//                WorkExperienceFragmentDirections.actionWorkExperienceFragmentToWorkExpHelperFragment()
-//            findNavController().navigate(action)
             WorkExpHelperDialog().show(childFragmentManager,"work")
         }
         binding.nextSave.setOnClickListener {
             val workModel  = WorkAndPersonalDataModel(modelPersonal,viewModel.workList.toList())
-            val action = WorkExperienceFragmentDirections.actionWorkExperienceFragmentToEducationFragment()
+            val action =
+                WorkExperienceFragmentDirections.actionWorkExperienceFragmentToEducationFragment(
+                    workModel
+                )
             findNavController().navigate(action)
         }
 

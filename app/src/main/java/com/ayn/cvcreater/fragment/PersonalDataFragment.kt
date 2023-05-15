@@ -1,4 +1,4 @@
-package com.ayn.cvcreater
+package com.ayn.cvcreater.fragment
 
 import android.app.DatePickerDialog
 import android.content.DialogInterface
@@ -12,7 +12,9 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.ayn.cvcreater.OpeningFragmentDirections
 import com.ayn.cvcreater.databinding.FragmentPersonalDataBinding
+import com.ayn.cvcreater.model.ModelPersonal
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import java.time.LocalDate

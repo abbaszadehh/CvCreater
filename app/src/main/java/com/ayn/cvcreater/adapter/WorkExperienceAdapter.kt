@@ -1,10 +1,10 @@
-package com.ayn.cvcreater
+package com.ayn.cvcreater.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ayn.cvcreater.databinding.WorkCardBinding
+import com.ayn.cvcreater.model.ModelWorkExperience
 
 
 class WorkExperienceAdapter : RecyclerView.Adapter<WorkExperienceAdapter.WorkExperienceHolder>(){
@@ -23,7 +23,7 @@ class WorkExperienceAdapter : RecyclerView.Adapter<WorkExperienceAdapter.WorkExp
     }
 
     inner class WorkExperienceHolder(private val binding: WorkCardBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind (item : ModelWorkExperience,position: Int){
+        fun bind (item : ModelWorkExperience, position: Int){
             with(binding){
                 jobTitle.isEnabled = false
                 companyName.isEnabled = false
@@ -44,7 +44,9 @@ class WorkExperienceAdapter : RecyclerView.Adapter<WorkExperienceAdapter.WorkExp
                 }
             }
         }
+
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkExperienceHolder {
         val layout = WorkCardBinding.inflate(LayoutInflater.from(parent.context),parent,false)

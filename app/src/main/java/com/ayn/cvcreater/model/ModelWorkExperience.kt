@@ -1,4 +1,4 @@
-package com.ayn.cvcreater
+package com.ayn.cvcreater.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

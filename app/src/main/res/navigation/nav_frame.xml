@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/openingFragment"
-        android:name="com.ayn.cvcreater.OpeningFragment"
+        android:name="com.ayn.cvcreater.fragment.OpeningFragment"
         android:label="fragment_opening"
         tools:layout="@layout/fragment_opening" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/personalDataFragment"
-        android:name="com.ayn.cvcreater.PersonalDataFragment"
+        android:name="com.ayn.cvcreater.fragment.PersonalDataFragment"
         android:label="fragment_personal_data"
         tools:layout="@layout/fragment_personal_data" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/workExperienceFragment"
-        android:name="com.ayn.cvcreater.WorkExperienceFragment"
+        android:name="com.ayn.cvcreater.fragment.WorkExperienceFragment"
         android:label="fragment_work_experience"
         tools:layout="@layout/fragment_work_experience" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/educationFragment"
-        android:name="com.ayn.cvcreater.EducationFragment"
+        android:name="com.ayn.cvcreater.fragment.EducationFragment"
         android:label="fragment_education"
         tools:layout="@layout/fragment_education" >
         <action
@@ -49,15 +49,27 @@
         <argument
             android:name="modelWork"
             app:argType="com.ayn.cvcreater.WorkAndPersonalDataModel" />
+        <action
+            android:id="@+id/action_educationFragment_to_educationHelperDialog"
+            app:destination="@id/educationHelperDialog" />
     </fragment>
     <fragment
         android:id="@+id/additionalDataFragment"
-        android:name="com.ayn.cvcreater.AdditionalDataFragment"
+        android:name="com.ayn.cvcreater.fragment.AdditionalDataFragment"
         android:label="fragment_adding_data"
-        tools:layout="@layout/fragment_adding_data" />
+        tools:layout="@layout/fragment_adding_data" >
+        <argument
+            android:name="PersWorkEduModel"
+            app:argType="com.ayn.cvcreater.model.PersAndWorkAndEduModel" />
+    </fragment>
     <dialog
         android:id="@+id/workExpHelperFragment"
-        android:name="com.ayn.cvcreater.WorkExpHelperDialog"
+        android:name="com.ayn.cvcreater.dialoq.WorkExpHelperDialog"
         android:label="fragment_work_exp_helper"
         tools:layout="@layout/fragment_work_exp_helper" />
+    <dialog
+        android:id="@+id/educationHelperDialog"
+        android:name="com.ayn.cvcreater.dialoq.EducationHelperDialog"
+        android:label="fragment_education_helper_dialog"
+        tools:layout="@layout/fragment_education_helper_dialog" />
 </navigation>
