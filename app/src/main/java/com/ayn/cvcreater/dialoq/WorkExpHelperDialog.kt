@@ -33,12 +33,12 @@ class WorkExpHelperDialog : DialogFragment() {
                 binding.jobTitle.setText(it.jobTitle)
                 binding.companyName.setText(it.companyName)
                 binding.enteringDate.setText(it.enteringDate)
-                binding.exitDate.setText(it.exitingDate)
+                binding.exitingDate.setText(it.exitingDate)
             } ?: apply {
                 binding.jobTitle.setText("")
                 binding.companyName.setText("")
                 binding.enteringDate.setText("")
-                binding.exitDate.setText("")
+                binding.exitingDate.setText("")
             }
         }
 
@@ -47,7 +47,7 @@ class WorkExpHelperDialog : DialogFragment() {
             val jobTitle = binding.jobTitle.text.toString()
             val companyName = binding.companyName.text.toString()
             val enteringDate = binding.enteringDate.text.toString()
-            val exitDate = binding.exitDate.text.toString()
+            val exitDate = binding.exitingDate.text.toString()
             item?.let {
                 item.companyName = companyName
                 item.jobTitle = jobTitle

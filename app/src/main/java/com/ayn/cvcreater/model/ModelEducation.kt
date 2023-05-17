@@ -6,8 +6,8 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class ModelEducation(
 
-    val university : String,
-    val faculty : String,
-    val degree : String
+    var university : String,
+    var faculty : String,
+    var degree : String
 
 ) : Parcelable
