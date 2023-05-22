@@ -15,6 +15,7 @@ import com.ayn.cvcreater.dialoq.EducationHelperDialog
 import com.ayn.cvcreater.model.PersAndWorkAndEduModel
 import com.ayn.cvcreater.model.WorkAndPersonalDataModel
 import com.ayn.cvcreater.viewModel.EducationViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class EducationFragment : Fragment() {
 
@@ -23,6 +24,7 @@ class EducationFragment : Fragment() {
     private val model: WorkAndPersonalDataModel by lazy { args.modelWork }
     private val viewModel: EducationViewModel by activityViewModels()
     private val educationAdapter = EducationAdapter()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,8 +63,7 @@ class EducationFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-
-    }
+   }
 
     fun setRw() {
         with(binding.rwEdu) {

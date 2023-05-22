@@ -27,7 +27,7 @@ class WorkExpHelperDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("workexp dialog","onView")
+
         viewModel.model.observe(viewLifecycleOwner) {
             it?.let {
                 binding.jobTitle.setText(it.jobTitle)
@@ -42,7 +42,7 @@ class WorkExpHelperDialog : DialogFragment() {
             }
         }
 
-        binding.save.setOnClickListener {
+        binding.next.setOnClickListener {
             val item = viewModel.getCurrentItem()
             val jobTitle = binding.jobTitle.text.toString()
             val companyName = binding.companyName.text.toString()

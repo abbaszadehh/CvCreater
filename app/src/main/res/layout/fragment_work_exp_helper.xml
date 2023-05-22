@@ -29,7 +29,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="5dp"
-                android:ems="20"
+                android:minWidth="400dp"
                 app:hintTextColor="@color/main"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,9 +48,11 @@
                 android:id="@+id/textInputLayout5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Company Name"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="5dp"
+                android:minWidth="400dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
@@ -60,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
-                    android:hint="Company Name" />
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -70,6 +72,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="5dp"
+                android:minWidth="400dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
@@ -89,6 +92,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="5dp"
+                android:minWidth="400dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
@@ -102,7 +106,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/save"
+                android:id="@+id/next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

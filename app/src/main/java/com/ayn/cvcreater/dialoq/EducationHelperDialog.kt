@@ -10,11 +10,13 @@ import com.ayn.cvcreater.databinding.FragmentEducationHelperDialogBinding
 import com.ayn.cvcreater.model.ModelEducation
 import com.ayn.cvcreater.model.ModelWorkExperience
 import com.ayn.cvcreater.viewModel.EducationViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class EducationHelperDialog : DialogFragment() {
 
     private lateinit var binding: FragmentEducationHelperDialogBinding
     private val viewModel: EducationViewModel by activityViewModels()
+    private val options = arrayOf("Bachelor","Master", "PHD", "Professor", "Docent")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +39,7 @@ class EducationHelperDialog : DialogFragment() {
                 binding.degree.setText("")
             }
         }
-        binding.save.setOnClickListener {
+        binding.next.setOnClickListener {
             val item = viewModel.getCurrentItem()
             val faculty = binding.faculty.text.toString()
             val university = binding.university.text.toString()
@@ -62,6 +64,12 @@ class EducationHelperDialog : DialogFragment() {
         }
         dialog?.setOnDismissListener {
             viewModel.modifyItem(null)
+        }
+        binding.degree.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext())
+                .setItems(options) { _, which: Int ->
+                    binding.degree.setText(options[which])
+                }.show()
         }
 
 
