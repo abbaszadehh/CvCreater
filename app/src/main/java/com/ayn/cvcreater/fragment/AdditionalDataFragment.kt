@@ -11,13 +11,15 @@ import com.ayn.cvcreater.databinding.FragmentAddingDataBinding
 import com.ayn.cvcreater.model.AdditionalDataModel
 import com.ayn.cvcreater.model.PersAndWorkAndEduModel
 import com.ayn.cvcreater.room.PdfDatabase
+import com.ayn.cvcreater.room.PdfEntity
+import com.google.gson.Gson
 
 class AdditionalDataFragment : Fragment() {
 
     private lateinit var binding: FragmentAddingDataBinding
     private val args: AdditionalDataFragmentArgs by navArgs()
     private val preVmodel: PersAndWorkAndEduModel by lazy { args.PersWorkEduModel }
-    private val pdfDatabase: PdfDatabase by lazy { PdfDatabase.getDatabase(requireContext()) }
+    private val pdfDatabase: PdfDatabase? by lazy { PdfDatabase.getDatabase(requireContext()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +35,8 @@ class AdditionalDataFragment : Fragment() {
 
         binding.next.setOnClickListener {
             val model = AdditionalDataModel(1,preVmodel, binding.addData.text.toString())
-            pdfDatabase.additionalDao().insert(model)
+            val pdf  = Gson().toJson(model,AdditionalDataModel::class.java)
+            pdfDatabase?.additionalDao()?.insert(PdfEntity(1, pdf))
             val action =
                 AdditionalDataFragmentDirections.actionAdditionalDataFragmentToTemplateFragment(
                     model

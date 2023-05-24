@@ -7,17 +7,30 @@ import androidx.room.RoomDatabase
 import com.ayn.cvcreater.model.AdditionalDataModel
 
 @Database(
-    entities = [AdditionalDataModel::class],
-    version = 1,
+    entities = [PdfEntity::class],
+    version = 2,
     exportSchema = false
 )
 abstract class PdfDatabase : RoomDatabase() {
     abstract fun additionalDao(): AdditionalDao
 
     companion object {
-        fun getDatabase(context: Context): PdfDatabase {
-            return Room.databaseBuilder(context = context, PdfDatabase::class.java, "PDF")
-                .fallbackToDestructiveMigration().build()
+        private var INSTANCE: PdfDatabase? = null
+
+        fun getDatabase(context: Context): PdfDatabase?{
+            if (INSTANCE == null){
+                synchronized(PdfDatabase::class){
+                    INSTANCE = Room.databaseBuilder(context.applicationContext,
+                        PdfDatabase::class.java,
+                        "PDF")
+                        .build()
+                }
+            }
+            return INSTANCE
+        }
+
+        fun destroyInstance(){
+            INSTANCE = null
         }
     }
 }
