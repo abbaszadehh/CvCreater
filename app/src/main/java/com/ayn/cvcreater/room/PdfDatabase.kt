@@ -8,7 +8,7 @@ import com.ayn.cvcreater.model.AdditionalDataModel
 
 @Database(
     entities = [PdfEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class PdfDatabase : RoomDatabase() {
@@ -22,7 +22,8 @@ abstract class PdfDatabase : RoomDatabase() {
                 synchronized(PdfDatabase::class){
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
                         PdfDatabase::class.java,
-                        "PDF")
+                        "ytr")
+                        .fallbackToDestructiveMigration()
                         .build()
                 }
             }
@@ -33,4 +34,12 @@ abstract class PdfDatabase : RoomDatabase() {
             INSTANCE = null
         }
     }
+}
+
+fun generateDb(context : Context): PdfDatabase?{
+    return Room.databaseBuilder(context.applicationContext,
+        PdfDatabase::class.java,
+        "ytr")
+        .fallbackToDestructiveMigration()
+        .build()
 }

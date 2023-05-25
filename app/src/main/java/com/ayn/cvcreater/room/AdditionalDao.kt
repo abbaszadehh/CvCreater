@@ -9,14 +9,18 @@ import com.ayn.cvcreater.model.AdditionalDataModel
 @Dao
 interface AdditionalDao {
     @Query("SELECT * FROM PdfEntity")
-     fun getAll()
+    suspend fun getAll() : List<PdfEntity>
 
     @Query("SELECT * FROM PdfEntity Where id =:id")
-    fun getById(id : Int)
+    suspend fun getById(id : Int): PdfEntity
 
     @Query("DELETE FROM PdfEntity Where id =:id")
     fun delete(id : Int)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(model: PdfEntity)
+    suspend fun insert(model: PdfEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertUser(userInsert: PdfEntity)
+
 }

@@ -11,13 +11,17 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ayn.cvcreater.databinding.FragmentPersonalDataBinding
 import com.ayn.cvcreater.model.ModelPersonal
 import com.ayn.cvcreater.room.PdfDatabase
 import com.ayn.cvcreater.room.PdfEntity
+import com.ayn.cvcreater.room.generateDb
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.util.*
 
@@ -26,7 +30,6 @@ class PersonalDataFragment : Fragment() {
     private var imageUrl: String? = null
     private val options = arrayOf("Single","Married","None")
     private var modelPersonalList  = arrayListOf<EditText>()
-    private val pdfDatabase: PdfDatabase? by lazy { PdfDatabase.getDatabase(requireContext()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +41,11 @@ class PersonalDataFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pdfDatabase?.additionalDao()?.insert(PdfEntity(1,"txt"))
-
+//        val pdfDatabase = PdfDatabase.getDatabase(requireContext())
+        val pdfDatabase = generateDb(requireContext())
+        lifecycleScope.launch {
+            pdfDatabase?.additionalDao()?.insertUser(PdfEntity(1,"txt"))
+        }
 
         with(binding){
             modelPersonalList.add(name)
