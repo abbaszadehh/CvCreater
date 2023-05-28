@@ -94,13 +94,20 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textColorHint="@color/secondlight">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/jobTitleName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/mainlight"
+                    android:fontFamily="monospace"
                     android:hint="Job Title Name" />
             </com.google.android.material.textfield.TextInputLayout>
 
