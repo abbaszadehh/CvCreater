@@ -15,12 +15,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ayn.cvcreater.databinding.FragmentPersonalDataBinding
 import com.ayn.cvcreater.model.ModelPersonal
-import com.ayn.cvcreater.room.PdfDatabase
 import com.ayn.cvcreater.room.PdfEntity
 import com.ayn.cvcreater.room.generateDb
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.util.*
@@ -28,8 +26,8 @@ import java.util.*
 class PersonalDataFragment : Fragment() {
     private lateinit var binding: FragmentPersonalDataBinding
     private var imageUrl: String? = null
-    private val options = arrayOf("Single","Married","None")
-    private var modelPersonalList  = arrayListOf<EditText>()
+    private val options = arrayOf("Single", "Married", "None")
+    private var modelPersonalList = arrayListOf<EditText>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,10 +42,10 @@ class PersonalDataFragment : Fragment() {
 //        val pdfDatabase = PdfDatabase.getDatabase(requireContext())
         val pdfDatabase = generateDb(requireContext())
         lifecycleScope.launch {
-            pdfDatabase?.additionalDao()?.insertUser(PdfEntity(1,"txt"))
+            pdfDatabase?.additionalDao()?.insertUser(PdfEntity(1, "txt"))
         }
 
-        with(binding){
+        with(binding) {
             modelPersonalList.add(name)
             modelPersonalList.add(surname)
             modelPersonalList.add(dob)
@@ -55,6 +53,7 @@ class PersonalDataFragment : Fragment() {
             modelPersonalList.add(mobil)
             modelPersonalList.add(status)
             modelPersonalList.add(about)
+            modelPersonalList.add(jobTitleName)
             modelPersonalList.add(mail)
         }
 
@@ -65,7 +64,8 @@ class PersonalDataFragment : Fragment() {
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
-            val datePicker = DatePickerDialog(requireContext(), { datePicker, year, month, day ->
+            val datePicker = DatePickerDialog(
+                requireContext(), { datePicker, year, month, day ->
                     binding.dob.setText("$day/${month + 1}/$year")
                 }, year, month, day
             )
@@ -81,63 +81,65 @@ class PersonalDataFragment : Fragment() {
 
         binding.next.setOnClickListener {
 
-           /*val name1 =""
-            val surname1 =""
-            val dob1 =""
-            val address1 =""
-            val contactNumber1 =""
-            val socialStatus1 =""
-            val description1 =""
-            val email1 =""
-            val modelPersonal = ModelPersonal(
-                name = name1,
-                surname = surname1,
-                dob = dob1,
-                address = address1,
-                phone = contactNumber1,
-                photo = imageUrl,
-                socialStatus = socialStatus1,
-                description = description1,
-                email = email1,
-            )
+            /*val name1 =""
+             val surname1 =""
+             val dob1 =""
+             val address1 =""
+             val contactNumber1 =""
+             val socialStatus1 =""
+             val description1 =""
+             val email1 =""
+             val modelPersonal = ModelPersonal(
+                 name = name1,
+                 surname = surname1,
+                 dob = dob1,
+                 address = address1,
+                 phone = contactNumber1,
+                 photo = imageUrl,
+                 socialStatus = socialStatus1,
+                 description = description1,
+                 email = email1,
+             )
 
-            val action =
-                OpeningFragmentDirections.actionOpeningFragmentToWorkExperienceFragment(
-                    modelPersonal
-                )
-            findNavController().navigate(action) */
+             val action =
+                 OpeningFragmentDirections.actionOpeningFragmentToWorkExperienceFragment(
+                     modelPersonal
+                 )
+             findNavController().navigate(action) */
 
-           if(modelPersonalList.any{ it.text.isEmpty() }){
-               Toast.makeText(requireContext(),"Punktlar boş ola bilməz", Toast.LENGTH_LONG).show()
-           }
-            else
-               with(binding) {
-                val name = name.text.toString()
-                val surname = surname.text.toString()
-                val dob = dob.text.toString()
-                val address = adres.text.toString()
-                val contactNumber = mobil.text.toString()
-                val socialStatus = status.text.toString()
-                val description = about.text.toString()
-                val email = mail.text.toString()
-                val modelPersonal = ModelPersonal(
-                    name = name,
-                    surname = surname,
-                    dob = dob,
-                    address = address,
-                    phone = contactNumber,
-                    photo = imageUrl,
-                    socialStatus = socialStatus,
-                    description = description,
-                    email = email
-                )
-                val action =
-                    OpeningFragmentDirections.actionOpeningFragmentToWorkExperienceFragment(
-                        modelPersonal
+            if (modelPersonalList.any { it.text.isEmpty() }) {
+                Toast.makeText(requireContext(), "Punktlar boş ola bilməz", Toast.LENGTH_LONG)
+                    .show()
+            } else
+                with(binding) {
+                    val name = name.text.toString()
+                    val surname = surname.text.toString()
+                    val dob = dob.text.toString()
+                    val address = adres.text.toString()
+                    val contactNumber = mobil.text.toString()
+                    val socialStatus = status.text.toString()
+                    val description = about.text.toString()
+                    val email = mail.text.toString()
+                    val jobTitle = jobTitleName.text.toString()
+                    val modelPersonal = ModelPersonal(
+                        name = name,
+                        surname = surname,
+                        dob = dob,
+                        address = address,
+                        phone = contactNumber,
+                        photo = imageUrl,
+                        socialStatus = socialStatus,
+                        description = description,
+                        email = email,
+                        jobTitleName = jobTitle
                     )
-                findNavController().navigate(action)
+                    val action =
+                        OpeningFragmentDirections.actionOpeningFragmentToWorkExperienceFragment(
+                            modelPersonal
+                        )
+                    findNavController().navigate(action)
 
-            }
+                }
         }
 
         binding.status.setOnClickListener {

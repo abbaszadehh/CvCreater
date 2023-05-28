@@ -180,11 +180,10 @@
         android:id="@+id/personName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:fontFamily="monospace"
         android:padding="5dp"
         android:text="Name"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
@@ -193,12 +192,11 @@
         android:id="@+id/personSurname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:fontFamily="monospace"
         android:padding="5dp"
         android:text="Surname"
         android:textColor="@android:color/holo_orange_light"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toBottomOf="@+id/personName" />
@@ -210,7 +208,7 @@
         android:fontFamily="monospace"
         android:padding="5dp"
         android:text="Job Title"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toBottomOf="@+id/personSurname" />
@@ -278,10 +276,12 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:text="Address"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintVertical_bias="0.066" />
 
     <TextView
         android:id="@+id/textView18"
@@ -307,7 +307,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/skillView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="TextView"

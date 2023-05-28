@@ -27,6 +27,15 @@ class TemplateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.personName.text = additionalData.persAndWorkAndEduModel.workAndPersonalDataModel.modelPersonal.name
+        binding.personSurname.text = additionalData.persAndWorkAndEduModel.workAndPersonalDataModel.modelPersonal.surname
+        binding.jobTitle.text = additionalData.persAndWorkAndEduModel.workAndPersonalDataModel.modelPersonal.jobTitleName
+        binding.mobil.text = additionalData.persAndWorkAndEduModel.workAndPersonalDataModel.modelPersonal.phone
+        binding.email.text = additionalData.persAndWorkAndEduModel.workAndPersonalDataModel.modelPersonal.email
+        binding.address.text = additionalData.persAndWorkAndEduModel.workAndPersonalDataModel.modelPersonal.address
+        binding.skillView.text = additionalData.additionalText
+
+
     }
 
 }
