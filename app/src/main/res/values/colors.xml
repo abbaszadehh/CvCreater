@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
     <resources>
-      <color name="main">#332A44</color>
-    <color name="second">#6E6E80</color>
+      <color name="main">#26006E</color>
+    <color name="second">#2626B6</color>
     <color name="mainlight">#584C6C</color>
     <color name="secondlight">#9587AA</color>
     <color name="white">#FFFFFF</color>

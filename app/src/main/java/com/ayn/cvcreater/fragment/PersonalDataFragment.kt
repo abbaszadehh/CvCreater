@@ -2,6 +2,7 @@ package com.ayn.cvcreater.fragment
 
 import android.app.DatePickerDialog
 import android.content.DialogInterface
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -25,7 +27,7 @@ import java.util.*
 
 class PersonalDataFragment : Fragment() {
     private lateinit var binding: FragmentPersonalDataBinding
-    private var imageUrl: String? = null
+    private var imageUrl: Uri? = null
     private val options = arrayOf("Single", "Married", "None")
     private var modelPersonalList = arrayListOf<EditText>()
 
@@ -152,7 +154,7 @@ class PersonalDataFragment : Fragment() {
 
     private val pickMedia =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-            imageUrl = uri?.path.toString()
+            imageUrl = uri
             Picasso.get().load(uri).into(binding.photo)
         }
 }

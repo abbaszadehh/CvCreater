@@ -12,7 +12,7 @@ data class ModelPersonal  (
     val dob : String,
     val address : String,
     val phone : String,
-    val photo : String?,
+    val photo : Uri?,
     val email : String,
     val socialStatus : String,
     val description : String
